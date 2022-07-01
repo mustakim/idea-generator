@@ -11,7 +11,7 @@ export class DatabaseConfiguration implements TypeOrmOptionsFactory {
             password: process.env.DATABASE_PASSWORD,
             database: process.env.DATABASE_NAME,
             logging: true,
-            synchronize: false,
+            synchronize: true,
             dropSchema: false,
             entities: ['src/**/*.entity.ts', 'dist/**/*.entity.js'],
         };
