@@ -1,9 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { ConfigModule, ConfigService } from '@nestjs/config';
+
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { IdeaModule } from './idea/idea.module';
+
 import configuration from './config';
 
 @Module({
@@ -16,7 +19,8 @@ import configuration from './config';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => configService.get('database'),
       inject: [ConfigService],
-    })
+    }),
+    IdeaModule
   ],
   controllers: [AppController],
   providers: [AppService],
